@@ -66,13 +66,13 @@ def p_E_add(t):
     'E : E tk_add T'
 
     temp =  new_temp()
-    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} + {t[3]['tmp']}\n"}
+    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} + {t[3]['tmp']}\n\t"}
 
 def p_E_sub(t):
     'E : E tk_sub T'
 
     temp =  new_temp()
-    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} - {t[3]['tmp']}\n"}
+    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} - {t[3]['tmp']}\n\t"}
 
 def p_E_T(t):
     'E : T'
@@ -84,13 +84,13 @@ def p_T_mult(t):
     'T : T tk_mult F'
 
     temp =  new_temp()
-    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} * {t[3]['tmp']}\n"}
+    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} * {t[3]['tmp']}\n\t"}
 
 def p_T_div(t):
     'T : T tk_div F'
 
     temp =  new_temp()
-    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} / {t[3]['tmp']}\n"}
+    t[0] = {'tmp': temp, 'c3d': f"{t[1]['c3d']}{t[3]['c3d']}{temp} = {t[1]['tmp']} / {t[3]['tmp']}\n\t"}
 
 def p_T_F(t):
     'T : F'
@@ -109,12 +109,36 @@ def p_F_id(t):
     t[0] = {'tmp': t[1], 'c3d': '' }
 
 
+from os import read
 import ply.lex as lex
 import ply.yacc as yacc
 
 lexer = lex.lex()
 parser = yacc.yacc()
 
-print('Input:\nvar1 / var2 * var3\n')
-print(f"Out:\n{parser.parse('var1 / var2 * var3')['c3d']}")
+# print('Input:\nvar1 / var2 * var3\n')
+# print(f"Out:\n{parser.parse('var1 / var2 * var3')['c3d']}")
 
+with open('inputs.txt', 'r') as inputs:
+    readme = '''>## Elian Saúl Estrada Urbina
+>### 201806838
+
+# Code intermide generator of aritmethic expression
+'''
+    count = 1
+    while True:
+        line = inputs.readline().replace('\n', '')
+
+        if line != '':
+
+            #print(f'Input:\n{line}\n')
+            readme += f'{count}. ### Input:\n\t```python=\n\t{line}\n\t```\n'
+            #print(f"Output:\n{parser.parse(line)['c3d']}")
+            readme += f"\t### Output:\n\t```python=\n\t{parser.parse(line)['c3d']}```\n"
+            temp = 0
+            count += 1
+            continue
+        break
+
+with open('README.md', 'w') as file:
+    file.write(readme)
