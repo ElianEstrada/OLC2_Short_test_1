@@ -131,9 +131,7 @@ with open('inputs.txt', 'r') as inputs:
 
         if line != '':
 
-            #print(f'Input:\n{line}\n')
             readme += f'{count}. ### Input:\n\t```python=\n\t{line}\n\t```\n'
-            #print(f"Output:\n{parser.parse(line)['c3d']}")
             readme += f"\t### Output:\n\t```python=\n\t{parser.parse(line)['c3d']}```\n"
             temp = 0
             count += 1
