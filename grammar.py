@@ -20,7 +20,6 @@ tokens = [
     'tk_div',
     'tk_par_o',
     'tk_par_c',
-    'tk_assign',
     'tk_id'
 ] + list(reserved_words.values())
 
@@ -38,7 +37,6 @@ t_tk_mult       = r'\*'
 t_tk_div        = r'/'
 t_tk_par_o      = r'\('
 t_tk_par_c      = r'\)'
-t_tk_assign     = r'='
 #t_tk_id         = r'[A-Za-z][A-Za-z0-9_]*'
 
 #definition of tokens most complex
@@ -202,7 +200,7 @@ def p_T_F(t):
 
 ##-------------Production F-------------##
 def p_F_agroup(t):
-    'F : tk_par_o E tk_par_c'
+    'F : tk_par_o L tk_par_c'
 
     t[0] = t[2]
 
@@ -242,6 +240,7 @@ with open('inputs.txt', 'r') as inputs:
 
             readme += "```\n"
             temp = 0
+            label = 0
             count += 1
             continue
         break
