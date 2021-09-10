@@ -134,12 +134,12 @@ def p_N_R(t):
 
 ##-------------Production R-------------##
 def p_R(t):
-    '''R : R tk_eq E
-         | R tk_uneq E
-         | R tk_gteq E
-         | R tk_gt E
-         | R tk_lseq E
-         | R tk_ls E '''
+    '''R : E tk_eq E
+         | E tk_uneq E
+         | E tk_gteq E
+         | E tk_gt E
+         | E tk_lseq E
+         | E tk_ls E '''
     
     ltrue = new_label()
     lfalse = new_label()
