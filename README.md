@@ -1,4 +1,4 @@
->## Elian Saï¿½l Estrada Urbina
+>## Elian Saúl Estrada Urbina
 >### 201806838
 
 # Code intermide generator of aritmethic expression
@@ -119,4 +119,31 @@
 	t7 = var1 - t6
 	t8 = var9 * var10
 	t9 = t7 / t8
+	```
+11. ### Input:
+	```python=
+	var1 > var2
+	```
+	### Output:
+	```python=
+	if var1 > var2 goto L1
+	goto L2
+
+	LV: L1
+	LF: L2
+	```
+12. ### Input:
+	```python=
+	var1 < var2 and var3 > var4
+	```
+	### Output:
+	```python=
+	if var1 < var2 goto L3
+	goto L4
+	L3:
+	if var3 > var4 goto L5
+	goto L6
+
+	LV: L5
+	LF: L4,L6
 	```
