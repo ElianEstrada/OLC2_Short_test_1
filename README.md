@@ -201,3 +201,15 @@
 	LV: L3,L8,L9
 	LF: L10
 	```
+12. ### Input:
+	```python=
+	not not var1 > var2
+	```
+	### Output:
+	```python=
+	if var1 > var2 goto L1
+	goto L2
+
+	LV: L1
+	LF: L2
+	```

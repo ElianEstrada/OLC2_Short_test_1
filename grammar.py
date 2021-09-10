@@ -123,7 +123,7 @@ def p_A_N(t):
 
 ##-------------Production N-------------##
 def p_N_not(t):
-    'N : res_not R'
+    'N : res_not N'
 
     t[0] = {'c3d': t[2]['c3d'], 'LV': t[2]['LF'], 'LF': t[2]['LV']}
 
